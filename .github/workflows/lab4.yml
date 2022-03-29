@@ -59,9 +59,9 @@ jobs:
       verbose: true
       dry_run: true
 
-ci-integration-test:
- runs-on: ubuntu-latest
- steps:
+ ci-integration-test:
+  runs-on: ubuntu-latest
+  steps:
    - uses: actions/checkout@v3
    - name: Use Node.js 16.x
      uses: actions/setup-node@v3
