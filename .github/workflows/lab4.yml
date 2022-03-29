@@ -24,6 +24,7 @@ jobs:
       - run: npm clean-install
       - run: npm run lint
       - run: npm run unit-tests
+        uses: actions/upload-artifact@v3
       # - run: npm run lint
 
       - if: github.ref == 'refs/heads/main'
