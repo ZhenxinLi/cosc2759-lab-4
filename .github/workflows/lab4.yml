@@ -27,6 +27,7 @@ jobs:
     - run: npm run lint
 
      # - run: npm run unit-tests
+
  ci-unit-test:
   if: false 
   needs: ci-lint
@@ -69,7 +70,9 @@ jobs:
     with:
       node-version: "16"
       cache: "npm"
+
   - run: npm clean-install
+  
   - run: npm run integration-tests
     env:
       MONGO_URL: mongodb://localhost:27017/todos
