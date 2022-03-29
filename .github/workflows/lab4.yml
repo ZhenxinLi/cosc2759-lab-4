@@ -22,21 +22,6 @@ jobs:
         node-version: "16"
         cache: "npm"
 
-<<<<<<< HEAD
-      - run: npm clean-install
-
-      - run: npm run lint
-
-     # - run: npm run unit-tests
- ci-unit-test:
-  needs: ci-lint
-  runs-on: ubuntu-latest
-  steps:
-  - uses: actions/checkout@v3
-
-  - name: Use Node.js 16.x
-     uses: actions/setup-node@v3
-=======
     - run: npm clean-install
 
     - run: npm run lint
@@ -51,7 +36,6 @@ jobs:
 
   - name: Use Node.js 16.x
     uses: actions/setup-node@v3
->>>>>>> f0660106c674c80af0490f1a9a6d28c93614d610
     with:
       node-version: "16"
       cache: "npm"
