@@ -92,7 +92,7 @@ jobs:
   - name: upload integration code coverage
     uses: actions/upload-artifact@v3
     with: 
-      name: code-coverage
+      name: integration-code-coverage
       path: ./coverage/coverage-final.json
 
   - if: github.ref == 'refs/heads/main'
