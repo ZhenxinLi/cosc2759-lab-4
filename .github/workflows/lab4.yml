@@ -62,16 +62,17 @@ jobs:
  ci-integration-test:
   runs-on: ubuntu-latest
   steps:
-   - uses: actions/checkout@v3
-   - name: Use Node.js 16.x
-     uses: actions/setup-node@v3
-     with:
-       node-version: "16"
-       cache: "npm"
-   - run: npm clean-install
-   - run: npm run integration-tests
-     env:
-       MONGO_URL: mongodb://localhost:27017/todos
+  - uses: actions/checkout@v3
+
+  - name: Use Node.js 16.x
+    uses: actions/setup-node@v3
+    with:
+      node-version: "16"
+      cache: "npm"
+  - run: npm clean-install
+  - run: npm run integration-tests
+    env:
+      MONGO_URL: mongodb://localhost:27017/todos
 
   - if: github.ref == 'refs/heads/main'
     run: npm pack
