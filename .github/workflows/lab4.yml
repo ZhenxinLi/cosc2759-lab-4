@@ -47,7 +47,7 @@ jobs:
   - name: upload code coverage
     uses: actions/upload-artifact@v3
     with: 
-      name: code-coverage
+      name: unit-test-code-coverage
       path: ./coverage/coverage-final.json
       
   - name: Validate Coverage
@@ -93,7 +93,7 @@ jobs:
   - name: upload code coverage
     uses: actions/upload-artifact@v3
     with: 
-      name: code-coverage
+      name: integration-test-code-coverage
       path: ./coverage/coverage-final.json
 
  ci-sast:
