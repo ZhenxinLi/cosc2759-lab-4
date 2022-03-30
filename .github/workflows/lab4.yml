@@ -11,7 +11,7 @@ on:
 
 jobs:
  ci-lint:
-  if: false 
+  # if: false 
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
@@ -29,7 +29,7 @@ jobs:
      # - run: npm run unit-tests
 
  ci-unit-test:
-  if: false 
+  # if: false 
   needs: ci-lint
   runs-on: ubuntu-latest
   steps:
