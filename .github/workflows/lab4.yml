@@ -61,7 +61,19 @@ jobs:
       dry_run: true
 
  ci-integration-test:
+  needs: ci-unit-test
   runs-on: ubuntu-latest
+  services:
+   mongodb:
+    image: mongo:4.0
+    options: >-
+      --health-cmd mongo
+      --health-interval 10s
+      --health-timeout 5s
+      --health-retries 5
+    ports:
+      - 27017:27017
+  
   steps:
   - uses: actions/checkout@v3
 
@@ -77,18 +89,7 @@ jobs:
     env:
       MONGO_URL: mongodb://localhost:27017/todos
       APP_PORT: 2000
-  
-  services:
-   mongodb:
-    image: mongo:4.0
-    options: >-
-      --health-cmd mongo
-      --health-interval 10s
-      --health-timeout 5s
-      --health-retries 5
-    ports:
-      - 27017:27017
-  
+
   - name: upload code coverage
     uses: actions/upload-artifact@v3
     with: 
