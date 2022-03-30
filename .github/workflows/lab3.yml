@@ -11,6 +11,7 @@ on:
 
 jobs:
   test:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -33,3 +34,28 @@ jobs:
         with:
           name: node-todo-${{ github.sha }}
           path: ./*.tgz
+  
+  ci-sast:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v3
+
+     - name: Install NodeJsScan
+       run: |
+         sudo apt-get update
+         sudo apt-get install python3-pip
+         pip3 install nodejsscan
+
+     - name: Execute Node Scan
+       run: |
+         nodejsscan -d . -o sast-output.json
+    
+     - run: cat sast-output.json
+
+     - run: exit $(cat sast-output.json | jq .total_count.sec)
+
+     - name: upload code coverage
+       uses: actions/upload-artifact@v3
+       with: 
+        name: sast-output
+        path: ./coverage/coverage-final.json
